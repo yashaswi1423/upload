@@ -1,0 +1,21 @@
+{
+  "name": "smart-horizon-hackathon",
+  "version": "1.0.0",
+  "description": "Problem Statement Submission System for Smart Horizon Hackathon 2026",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["hackathon", "submission", "admin", "nodejs"],
+  "author": "Smart Horizon Hackathon Team",
+  "license": "MIT"
+}

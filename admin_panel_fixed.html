@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Problem Statement Submissions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f5f5f5; 
+            line-height: 1.6;
+        }
+        .header { 
+            background: linear-gradient(135deg, #2b2d73, #c12d6b); 
+            color: white; 
+            padding: 20px; 
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 20px auto; 
+            padding: 0 20px; 
+        }
+        .stats { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        }
+        .stat-card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-number { 
+            font-size: 2.5em; 
+            font-weight: bold; 
+            color: #2b2d73; 
+            margin-bottom: 10px;
+        }
+        .stat-label { 
+            color: #666; 
+            font-weight: 500;
+        }
+        .submissions-container { 
+            background: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .submissions-header {
+            background: #2b2d73;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .refresh-btn {
+            background: #c12d6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .refresh-btn:hover { background: #a02456; }
+        .submissions-list { 
+            max-height: 600px; 
+            overflow-y: auto; 
+            padding: 20px;
+        }
+        .submission-item { 
+            padding: 20px; 
+            border-bottom: 1px solid #eee; 
+            transition: background-color 0.3s ease;
+        }
+        .submission-item:hover { background: #f8f9fa; }
+        .submission-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            margin-bottom: 15px; 
+        }
+        .submission-title { 
+            font-size: 1.2em; 
+            font-weight: bold; 
+            color: #2b2d73; 
+            margin-bottom: 5px;
+        }
+        .submission-org { 
+            color: #666; 
+            font-size: 0.9em; 
+        }
+        .submission-actions { 
+            display: flex; 
+            gap: 10px; 
+        }
+        .btn { 
+            padding: 8px 16px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 0.9em; 
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-view { background: #17a2b8; color: white; }
+        .btn-view:hover { background: #138496; }
+        .btn-approve { background: #28a745; color: white; }
+        .btn-approve:hover { background: #218838; }
+        .btn-reject { background: #dc3545; color: white; }
+        .btn-reject:hover { background: #c82333; }
+        .status { 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-size: 0.8em; 
+            font-weight: bold; 
+            text-transform: uppercase;
+        }
+        .status.pending { background: #fff3cd; color: #856404; }
+        .status.approved { background: #d4edda; color: #155724; }
+        .status.rejected { background: #f8d7da; color: #721c24; }
+        .loading { 
+            text-align: center; 
+            padding: 40px; 
+            color: #666; 
+        }
+        .error { 
+            background: #f8d7da; 
+            color: #721c24; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin: 20px 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔐 Admin Panel - Problem Statement Submissions</h1>
+        <p>Smart Horizon Hackathon 2026</p>
+    </div>
+
+    <div class="container">
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-count">-</div>
+                <div class="stat-label">Total Submissions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pending-count">-</div>
+                <div class="stat-label">Pending Review</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="approved-count">-</div>
+                <div class="stat-label">Approved</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="rejected-count">-</div>
+                <div class="stat-label">Rejected</div>
+            </div>
+        </div>
+
+        <div class="submissions-container">
+            <div class="submissions-header">
+                <h2>📋 All Submissions</h2>
+                <button class="refresh-btn" onclick="loadSubmissions()">🔄 Refresh</button>
+            </div>
+            <div class="submissions-list" id="submissions-list">
+                <div class="loading">Loading submissions...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let submissions = [];
+
+        // Load submissions on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, starting to load submissions...');
+            loadSubmissions();
+        });
+
+        async function loadSubmissions() {
+            console.log('loadSubmissions() called');
+            const container = document.getElementById('submissions-list');
+            container.innerHTML = '<div class="loading">Loading submissions...</div>';
+            
+            try {
+                console.log('Fetching from: api/submissions.php');
+                const response = await fetch('api/submissions.php');
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const text = await response.text();
+                console.log('Raw response:', text);
+                
+                submissions = JSON.parse(text);
+                console.log('Parsed submissions:', submissions);
+                
+                displaySubmissions();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading submissions:', error);
+                container.innerHTML = `
+                    <div class="error">
+                        <strong>Error loading submissions:</strong> ${error.message}
+                        <br><br>
+                        <button onclick="loadSubmissions()" class="btn btn-view">Try Again</button>
+                        <br><br>
+                        <small>Check browser console (F12) for more details</small>
+                    </div>
+                `;
+            }
+        }
+
+        function displaySubmissions() {
+            console.log('displaySubmissions() called with', submissions.length, 'submissions');
+            const container = document.getElementById('submissions-list');
+            
+            if (submissions.length === 0) {
+                container.innerHTML = '<div class="loading">No submissions found.</div>';
+                return;
+            }
+
+            container.innerHTML = submissions.map(submission => `
+                <div class="submission-item">
+                    <div class="submission-header">
+                        <div>
+                            <div class="submission-title">${escapeHtml(submission.ps_title)}</div>
+                            <div class="submission-org">
+                                <strong>${escapeHtml(submission.org_name)}</strong> • 
+                                ${escapeHtml(submission.spoc_name)} • 
+                                ${escapeHtml(submission.contact_email)}
+                            </div>
+                        </div>
+                        <div class="submission-actions">
+                            <span class="status ${submission.status}">${submission.status}</span>
+                            <button class="btn btn-view" onclick="viewDetails(${submission.id})">👁️ View</button>
+                            ${submission.status === 'pending' ? `
+                                <button class="btn btn-approve" onclick="updateStatus(${submission.id}, 'approved')">✅ Approve</button>
+                                <button class="btn btn-reject" onclick="updateStatus(${submission.id}, 'rejected')">❌ Reject</button>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                        <div>
+                            <h4 style="color: #2b2d73; margin-bottom: 8px;">📞 Contact Information</h4>
+                            <p style="margin: 5px 0; color: #555;"><strong>Phone:</strong> ${escapeHtml(submission.spoc_contact)}</p>
+                            <p style="margin: 5px 0; color: #555;"><strong>Domain:</strong> ${escapeHtml(submission.domain || 'Not specified')}</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #2b2d73; margin-bottom: 8px;">📅 Submission Info</h4>
+                            <p style="margin: 5px 0; color: #555;"><strong>Submitted:</strong> ${new Date(submission.submission_date).toLocaleString()}</p>
+                            <p style="margin: 5px 0; color: #555;"><strong>Documents:</strong> ${submission.document_count} files</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats() {
+            console.log('updateStats() called');
+            const total = submissions.length;
+            const pending = submissions.filter(s => s.status === 'pending').length;
+            const approved = submissions.filter(s => s.status === 'approved').length;
+            const rejected = submissions.filter(s => s.status === 'rejected').length;
+
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('pending-count').textContent = pending;
+            document.getElementById('approved-count').textContent = approved;
+            document.getElementById('rejected-count').textContent = rejected;
+        }
+
+        function viewDetails(id) {
+            alert(`View details for submission ID: ${id}\n\nThis would open a modal with full submission details.`);
+        }
+
+        async function updateStatus(id, status) {
+            const action = status === 'approved' ? 'approve' : 'reject';
+            if (!confirm(`Are you sure you want to ${action} this submission?`)) return;
+
+            try {
+                console.log(`Updating status for ID ${id} to ${status}`);
+                const response = await fetch('api/update_status.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id, status })
+                });
+
+                if (!response.ok) throw new Error('Failed to update status');
+                
+                const result = await response.json();
+                if (result.success) {
+                    loadSubmissions(); // Reload to show updated status
+                    alert(`Submission ${action}d successfully!`);
+                } else {
+                    throw new Error(result.message || 'Update failed');
+                }
+            } catch (error) {
+                alert('Error updating status: ' + error.message);
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

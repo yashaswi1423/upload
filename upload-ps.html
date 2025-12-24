@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit Problem Statement | International Hackathon 2026</title>
+  <meta name="description" content="Submit your problem statement for the 48-Hour International Hackathon 2026 at NHCE" />
+  <meta name="theme-color" content="#2b2d73" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .phone-input-container {
+      display: flex;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+    
+    .country-code-select {
+      flex: 0 0 200px;
+      padding: 0.75rem;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      background: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+    
+    .country-code-select:focus {
+      outline: none;
+      border-color: #2b2d73;
+      box-shadow: 0 0 0 3px rgba(43, 45, 115, 0.1);
+    }
+    
+    .phone-number-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .phone-number-input:focus {
+      outline: none;
+      border-color: #2b2d73;
+      box-shadow: 0 0 0 3px rgba(43, 45, 115, 0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .phone-input-container {
+        flex-direction: column;
+      }
+      
+      .country-code-select {
+        flex: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="College branding">
+    <div class="header-inner">
+      <div class="logo left">
+        <img src="Silver_Jubille_Logo-removebg-preview.png" alt="Silver Jubilee — 25 years logo" />
+      </div>
+      <div class="logo center">
+        <img src="NHCE Blue.png" alt="New Horizon College of Engineering logo" />
+      </div>
+      <div class="logo right">
+        <img src="hi.png" alt="Institution's Innovation Council logo" />
+      </div>
+    </div>
+
+    <nav class="site-nav" role="navigation" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a class="nav-link" href="index.html">Back to Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="section upload-page" role="main">
+    <div class="container">
+      <div class="upload-header">
+        <h1>Submit Problem Statement</h1>
+        <p class="subtitle">We invite ministries, government organizations, and industry partners to submit problem statements for the 48-Hour International Hackathon 2026</p>
+        <div id="system-indicator" class="system-badge" style="margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; text-align: center;">
+          <span id="system-text">🔄 Detecting system...</span>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="ps-upload-form" class="ps-form">
+          <div class="form-group">
+            <label for="org-name">Organization Name <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="org-name" 
+              name="orgName" 
+              required 
+              placeholder="Enter your organization name"
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="spoc-name">Name of the SPOC (Single Point of Contact) <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="spoc-name" 
+              name="spocName" 
+              required 
+              placeholder="Enter the name of the spokesperson/contact person"
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="spoc-contact">Contact Number of SPOC <span class="required">*</span></label>
+            <div class="phone-input-container">
+              <select id="country-code" name="countryCode" class="country-code-select" required>
+                <option value="+93">🇦🇫 Afghanistan (+93)</option>
+                <option value="+880">🇧🇩 Bangladesh (+880)</option>
+                <option value="+975">🇧🇹 Bhutan (+975)</option>
+                <option value="+673">🇧🇳 Brunei (+673)</option>
+                <option value="+855">🇰🇭 Cambodia (+855)</option>
+                <option value="+86">🇨🇳 China (+86)</option>
+                <option value="+91" selected>🇮🇳 India (+91)</option>
+                <option value="+62">🇮🇩 Indonesia (+62)</option>
+                <option value="+98">🇮🇷 Iran (+98)</option>
+                <option value="+964">🇮🇶 Iraq (+964)</option>
+                <option value="+972">🇮🇱 Israel (+972)</option>
+                <option value="+81">🇯🇵 Japan (+81)</option>
+                <option value="+962">🇯🇴 Jordan (+962)</option>
+                <option value="+7">🇰🇿 Kazakhstan (+7)</option>
+                <option value="+965">🇰🇼 Kuwait (+965)</option>
+                <option value="+996">🇰🇬 Kyrgyzstan (+996)</option>
+                <option value="+856">🇱🇦 Laos (+856)</option>
+                <option value="+961">🇱🇧 Lebanon (+961)</option>
+                <option value="+60">🇲🇾 Malaysia (+60)</option>
+                <option value="+960">🇲🇻 Maldives (+960)</option>
+                <option value="+976">🇲🇳 Mongolia (+976)</option>
+                <option value="+95">🇲🇲 Myanmar (+95)</option>
+                <option value="+977">🇳🇵 Nepal (+977)</option>
+                <option value="+850">🇰🇵 North Korea (+850)</option>
+                <option value="+968">🇴🇲 Oman (+968)</option>
+                <option value="+92">🇵🇰 Pakistan (+92)</option>
+                <option value="+970">🇵🇸 Palestine (+970)</option>
+                <option value="+63">🇵🇭 Philippines (+63)</option>
+                <option value="+974">🇶🇦 Qatar (+974)</option>
+                <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+                <option value="+65">🇸🇬 Singapore (+65)</option>
+                <option value="+82">🇰🇷 South Korea (+82)</option>
+                <option value="+94">🇱🇰 Sri Lanka (+94)</option>
+                <option value="+963">🇸🇾 Syria (+963)</option>
+                <option value="+886">🇹🇼 Taiwan (+886)</option>
+                <option value="+992">🇹🇯 Tajikistan (+992)</option>
+                <option value="+66">🇹🇭 Thailand (+66)</option>
+                <option value="+670">🇹🇱 Timor-Leste (+670)</option>
+                <option value="+90">🇹🇷 Turkey (+90)</option>
+                <option value="+993">🇹🇲 Turkmenistan (+993)</option>
+                <option value="+971">🇦🇪 UAE (+971)</option>
+                <option value="+998">🇺🇿 Uzbekistan (+998)</option>
+                <option value="+84">🇻🇳 Vietnam (+84)</option>
+                <option value="+967">🇾🇪 Yemen (+967)</option>
+              </select>
+              <input 
+                type="tel" 
+                id="spoc-contact" 
+                name="spocContact" 
+                required 
+                placeholder="Enter phone number"
+                pattern="[0-9]{7,15}"
+                aria-required="true"
+                class="phone-number-input"
+              />
+            </div>
+            <small class="form-hint">Select country code and enter phone number without country code</small>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Contact Email <span class="required">*</span></label>
+            <input 
+              type="email" 
+              id="contact-email" 
+              name="contactEmail" 
+              required 
+              placeholder="your.email@organization.com"
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="ps-title">Problem Statement Title <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="ps-title" 
+              name="psTitle" 
+              required 
+              placeholder="Enter a concise title for the problem statement"
+              aria-required="true"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="ps-description">Problem Statement Description <span class="required">*</span></label>
+            <textarea 
+              id="ps-description" 
+              name="psDescription" 
+              required 
+              rows="10"
+              placeholder="Provide a detailed description of the problem statement including:&#10;• Background and context&#10;• Problem definition&#10;• Expected outcomes&#10;• Technical requirements (if any)&#10;• Impact and relevance"
+              aria-required="true"
+            ></textarea>
+            <small class="form-hint">Please provide comprehensive details to help participants understand the problem clearly</small>
+          </div>
+
+          <div class="form-group">
+            <label for="dataset-link">Dataset Link (if any)</label>
+            <input 
+              type="url" 
+              id="dataset-link" 
+              name="datasetLink" 
+              placeholder="https://example.com/dataset"
+            />
+            <small class="form-hint">Provide a link to any relevant dataset or resources</small>
+          </div>
+
+          <div class="form-group">
+            <label for="logo-upload">Organization Logo <span class="required">*</span></label>
+            <div class="file-upload-wrapper">
+              <input 
+                type="file" 
+                id="logo-upload" 
+                name="logoUpload" 
+                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.ppt,.pptx"
+                required
+                aria-describedby="logo-help"
+                aria-required="true"
+              />
+              <label for="logo-upload" class="file-upload-label">
+                <span class="upload-icon">🏢</span>
+                <span class="upload-text">Choose logo file or drag here</span>
+              </label>
+              <div id="logo-preview" class="file-list"></div>
+            </div>
+            <small id="logo-help" class="form-hint">Accepted formats: JPG, PNG, PDF, DOC, DOCX, PPT, PPTX (Max 5MB)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="file-upload">Supporting Documents (Optional)</label>
+            <div class="file-upload-wrapper">
+              <input 
+                type="file" 
+                id="file-upload" 
+                name="fileUpload" 
+                multiple 
+                accept=".pdf,.doc,.docx,.ppt,.pptx"
+                aria-describedby="file-help"
+              />
+              <label for="file-upload" class="file-upload-label">
+                <span class="upload-icon">📎</span>
+                <span class="upload-text">Choose files or drag here</span>
+              </label>
+              <div id="file-list" class="file-list"></div>
+            </div>
+            <small id="file-help" class="form-hint">Accepted formats: PDF, DOC, DOCX, PPT, PPTX (Max 10MB per file)</small>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary large">Submit Problem Statement</button>
+            <button type="reset" class="btn outline">Clear Form</button>
+          </div>
+        </form>
+
+        <div id="success-message" class="success-message" style="display: none;">
+          <div class="success-icon">✓</div>
+          <h3>Thank You!</h3>
+          <p>Your problem statement has been submitted successfully. We will review it and get back to you soon.</p>
+          <button class="btn outline" onclick="resetForm()">Submit Another</button>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>Submission Guidelines</h3>
+        <ul>
+          <li>All fields marked with <span class="required">*</span> are mandatory</li>
+          <li>Please ensure your problem statement is clear, well-defined, and relevant to the hackathon domains</li>
+          <li>Problem statements should be challenging yet achievable within the 48-hour timeframe</li>
+          <li>You will receive a confirmation email once your submission is reviewed</li>
+          <li>For any queries, please contact us at hackathon@nhce.edu.in</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>&copy; 2026 New Horizon College of Engineering — 48-Hour International Hackathon</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const fileInput = document.getElementById('file-upload');
+    const fileList = document.getElementById('file-list');
+    const fileUploadLabels = document.querySelectorAll('.file-upload-label');
+    const logoInput = document.getElementById('logo-upload');
+    const logoPreview = document.getElementById('logo-preview');
+    let selectedFiles = [];
+    let selectedLogo = null;
+
+    // Logo upload handling
+    logoInput.addEventListener('change', function(e) {
+      handleLogo(e.target.files[0]);
+    });
+
+    // Logo drag and drop
+    const logoLabel = logoInput.nextElementSibling;
+    logoLabel.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      logoLabel.classList.add('drag-over');
+    });
+
+    logoLabel.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      logoLabel.classList.remove('drag-over');
+    });
+
+    logoLabel.addEventListener('drop', function(e) {
+      e.preventDefault();
+      logoLabel.classList.remove('drag-over');
+      if (e.dataTransfer.files.length > 0) {
+        handleLogo(e.dataTransfer.files[0]);
+      }
+    });
+
+    function handleLogo(file) {
+      if (!file) return;
+
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      const allowedTypes = [
+        'image/jpeg',
+        'image/jpg',
+        'image/png',
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/vnd.ms-powerpoint',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+      ];
+      const allowedExtensions = ['.jpg', '.jpeg', '.png', '.pdf', '.doc', '.docx', '.ppt', '.pptx'];
+
+      // Check file type
+      const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+      if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+        alert(`File "${file.name}" is not a valid format. Please upload JPG, PNG, PDF, DOC, DOCX, PPT, or PPTX files only.`);
+        return;
+      }
+
+      // Check file size
+      if (file.size > maxSize) {
+        alert(`File "${file.name}" is too large. Maximum file size is 5MB.`);
+        return;
+      }
+
+      selectedLogo = file;
+      displayLogo();
+    }
+
+    function displayLogo() {
+      logoPreview.innerHTML = '';
+      
+      if (!selectedLogo) return;
+
+      const fileItem = document.createElement('div');
+      fileItem.className = 'file-item';
+      
+      const fileIcon = getFileIcon(selectedLogo.name);
+      const fileSize = formatFileSize(selectedLogo.size);
+      
+      fileItem.innerHTML = `
+        <span class="file-icon">${fileIcon}</span>
+        <span class="file-name">${selectedLogo.name}</span>
+        <span class="file-size">${fileSize}</span>
+        <button type="button" class="file-remove" onclick="removeLogo()" aria-label="Remove ${selectedLogo.name}">×</button>
+      `;
+      
+      logoPreview.appendChild(fileItem);
+    }
+
+    function removeLogo() {
+      selectedLogo = null;
+      logoInput.value = '';
+      displayLogo();
+    }
+
+    // File upload handling
+    fileInput.addEventListener('change', function(e) {
+      handleFiles(e.target.files);
+    });
+
+    // Drag and drop functionality for documents
+    const fileUploadLabel = fileInput.nextElementSibling;
+    fileUploadLabel.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      fileUploadLabel.classList.add('drag-over');
+    });
+
+    fileUploadLabel.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      fileUploadLabel.classList.remove('drag-over');
+    });
+
+    fileUploadLabel.addEventListener('drop', function(e) {
+      e.preventDefault();
+      fileUploadLabel.classList.remove('drag-over');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    function handleFiles(files) {
+      const maxSize = 10 * 1024 * 1024; // 10MB
+      const allowedTypes = [
+        'application/pdf',
+        'application/vnd.ms-powerpoint',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ];
+      const allowedExtensions = ['.pdf', '.ppt', '.pptx', '.doc', '.docx'];
+
+      Array.from(files).forEach(file => {
+        // Check file type
+        const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+        if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+          alert(`File "${file.name}" is not a valid format. Please upload PDF, PPTX, DOC, or DOCX files only.`);
+          return;
+        }
+
+        // Check file size
+        if (file.size > maxSize) {
+          alert(`File "${file.name}" is too large. Maximum file size is 10MB.`);
+          return;
+        }
+
+        // Add to selected files if not already added
+        if (!selectedFiles.find(f => f.name === file.name && f.size === file.size)) {
+          selectedFiles.push(file);
+        }
+      });
+
+      displayFiles();
+    }
+
+    function displayFiles() {
+      fileList.innerHTML = '';
+      
+      if (selectedFiles.length === 0) {
+        return;
+      }
+
+      selectedFiles.forEach((file, index) => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        
+        const fileIcon = getFileIcon(file.name);
+        const fileSize = formatFileSize(file.size);
+        
+        fileItem.innerHTML = `
+          <span class="file-icon">${fileIcon}</span>
+          <span class="file-name">${file.name}</span>
+          <span class="file-size">${fileSize}</span>
+          <button type="button" class="file-remove" onclick="removeFile(${index})" aria-label="Remove ${file.name}">×</button>
+        `;
+        
+        fileList.appendChild(fileItem);
+      });
+    }
+
+    function removeFile(index) {
+      selectedFiles.splice(index, 1);
+      displayFiles();
+    }
+
+    function getFileIcon(filename) {
+      const ext = filename.split('.').pop().toLowerCase();
+      const icons = {
+        'pdf': '📄',
+        'ppt': '📊',
+        'pptx': '📊',
+        'doc': '📝',
+        'docx': '📝'
+      };
+      return icons[ext] || '📎';
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    // Form submission handler
+    document.getElementById('ps-upload-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validate required fields
+      const requiredFields = [
+        { id: 'org-name', name: 'Organization Name' },
+        { id: 'spoc-name', name: 'SPOC Name' },
+        { id: 'spoc-contact', name: 'Contact Number' },
+        { id: 'contact-email', name: 'Email Address' },
+        { id: 'ps-title', name: 'Problem Statement Title' },
+        { id: 'ps-description', name: 'Problem Statement Description' }
+      ];
+      
+      for (let field of requiredFields) {
+        const element = document.getElementById(field.id);
+        if (!element || !element.value.trim()) {
+          alert(`Please fill in the ${field.name} field.`);
+          if (element) element.focus();
+          return;
+        }
+      }
+      
+      // Validate logo upload
+      if (!selectedLogo) {
+        alert('Please upload your organization logo.');
+        document.getElementById('logo-upload').focus();
+        return;
+      }
+      
+      // Show loading state
+      const submitBtn = document.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+      
+      // Get form data
+      const formData = new FormData();
+      formData.append('orgName', document.getElementById('org-name').value);
+      formData.append('psTitle', document.getElementById('ps-title').value);
+      formData.append('psDescription', document.getElementById('ps-description').value);
+      formData.append('contactEmail', document.getElementById('contact-email').value);
+      formData.append('spocName', document.getElementById('spoc-name').value);
+      // Combine country code and phone number
+      const countryCode = document.getElementById('country-code').value;
+      const phoneNumber = document.getElementById('spoc-contact').value;
+      const fullPhoneNumber = countryCode + ' ' + phoneNumber;
+      formData.append('spocContact', fullPhoneNumber);
+      formData.append('datasetLink', document.getElementById('dataset-link').value);
+      
+      // Add logo to form data
+      if (selectedLogo) {
+        formData.append('logo', selectedLogo);
+      }
+      
+      // Detect which server we're on and use appropriate endpoint
+      const isNodeJS = window.location.port === '3000';
+      const endpoint = isNodeJS ? '/api/submit_problem_statement' : 'upload-ps.php';
+      
+      console.log('Form submission started');
+      console.log('Server type:', isNodeJS ? 'Node.js' : 'PHP');
+      console.log('Endpoint:', endpoint);
+      console.log('Selected files count:', selectedFiles.length);
+      
+      // Add supporting documents to form data
+      // Use different format based on server type
+      selectedFiles.forEach((file, index) => {
+        if (isNodeJS) {
+          formData.append('documents', file);  // Node.js expects this format
+        } else {
+          formData.append('documents[]', file);  // PHP expects this format
+        }
+      });
+      
+      // Submit to backend with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+      
+      console.log('Sending request to:', endpoint);
+      
+      fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+        signal: controller.signal
+      })
+      .then(response => {
+        clearTimeout(timeoutId);
+        console.log('Response received:', response.status, response.statusText);
+        
+        // Check if response is ok
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // Check if response is JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Server returned non-JSON response');
+        }
+        
+        return response.json();
+      })
+      .then(data => {
+        console.log('Response data:', data);
+        if (data.success) {
+          // Show success message
+          document.querySelector('.form-container form').style.display = 'none';
+          document.getElementById('success-message').style.display = 'block';
+          document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+          
+          // Update success message with submission ID
+          const successMsg = document.querySelector('#success-message p');
+          successMsg.innerHTML = `Your problem statement has been submitted successfully. <br><strong>Submission ID: ${data.submissionId}</strong><br>We will review it and get back to you soon.`;
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      })
+      .catch(error => {
+        clearTimeout(timeoutId);
+        
+        let errorMessage = 'Submission failed. Please try again.';
+        if (error.name === 'AbortError') {
+          errorMessage = 'Submission timeout. Please try again with smaller files.';
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+        
+        alert('Error: ' + errorMessage);
+        console.error('Submission error:', error);
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
+    });
+    
+    function resetForm() {
+      document.getElementById('ps-upload-form').reset();
+      selectedFiles = [];
+      selectedLogo = null;
+      displayFiles();
+      displayLogo();
+      document.querySelector('.form-container form').style.display = 'block';
+      document.getElementById('success-message').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // System detection and indicator
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user is verified via OTP
+      fetch('otp/check-verification.php')
+        .then(response => response.json())
+        .then(data => {
+          if (!data.verified) {
+            // Redirect to OTP verification if not verified
+            alert('Email verification required. Redirecting to verification page...');
+            window.location.href = 'otp/otp-email.php';
+            return;
+          }
+          
+          // Show verified user info
+          const verifiedInfo = document.createElement('div');
+          verifiedInfo.style.cssText = 'background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin: 10px 0; text-align: center;';
+          verifiedInfo.innerHTML = `✅ Email verified: ${data.email}`;
+          document.querySelector('.upload-header').appendChild(verifiedInfo);
+        })
+        .catch(error => {
+          console.log('Verification check failed, allowing access anyway');
+        });
+      
+      const isNodeJS = window.location.port === '3000';
+      const indicator = document.getElementById('system-indicator');
+      const systemText = document.getElementById('system-text');
+      
+      if (isNodeJS) {
+        systemText.textContent = '🟢 Node.js System (Port 3000)';
+        indicator.style.background = '#d4edda';
+        indicator.style.color = '#155724';
+      } else {
+        systemText.textContent = '🐘 PHP/XAMPP System (Port 80)';
+        indicator.style.background = '#cce5ff';
+        indicator.style.color = '#004085';
+      }
+    });
+
+  </script>
+</body>
+</html>
